@@ -1,0 +1,52 @@
+plugins {
+
+  id 'java'
+  id 'pmd'
+  id 'checkstyle'
+}
+
+ext {
+  checkstyleVersion = '10.17.0'
+  junitVersion = '5.10.3'
+  pmdVersion = '7.4.0'
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+dependencies{
+  // Add Junit , and application/library third party dependencies
+  testImplementation(platform("org.junit:junit-bom:${junitVersion}"))
+	testImplementation('org.junit.jupiter:junit-jupiter')
+	testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+}
+
+// 
+// copy pmd rules to project rootDir/rules/pmd/java.xml
+// reference: https://www.baeldung.com/pmd, https://docs.gradle.org/current/userguide/pmd_plugin.html
+pmd {
+    consoleOutput = true
+    toolVersion = pmdVersion
+    ruleSetConfig = rootProject.resources.text.fromFile('rules/pmd/java.xml')
+    // use the properties below to reduce error by fixing iteratively 
+    // and finally decide which rules to allow as per aggreed upon team coding standards
+    // maxFailures = 6.
+    // ignoreFailures = true
+}
+
+pmdTest{
+    enabled = false
+}
+
+// For checkstyle --> Reference: https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml
+// Download to projectRoot/rules/checkstyle/java.xml
+
+checkstyle {
+    toolVersion = checkstyleVersion
+    checkstyleTest.enabled = false. // disable test folder
+    config  = rootProject.resources.text.fromFile('rules/checkstyle/java.xml')
+}
