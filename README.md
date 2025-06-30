@@ -1,4 +1,4 @@
-# 🛠️ Utilities Repository
+# 🛠️ Tinkerpad - Collection of personal dotfile/notes/scripts
 
 A collection of useful scripts and snippets for development workflows across Python, macOS, Gradle, and Temporal. This repository is designed to streamline your local environment setup, automate repetitive tasks, and organize common design patterns.
 
