@@ -57,7 +57,7 @@ utilities/
 This repository is intended to be cloned and used on-demand:
 
 ```bash
-git clone https://github.com/itspkannan/utilities.git
+git clone https://github.com/itspkannan/tinkerpad.git
 cd utilities
 chmod +x scripts/*.sh
 ````
