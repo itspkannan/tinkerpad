@@ -37,6 +37,7 @@ utilities/
 
 
 ### `scripts/pyproject.sh`
+
 > Automates the creation of a new Python project using Poetry.  
 🐍 Features:
 - Creates folder structure
@@ -46,7 +47,7 @@ utilities/
 
 ### `scripts/temporal.sh`
 > Script to bootstrap or manage a Temporal.io microservice.  
-⏱️ Could include helpers to:
+
 - Generate service scaffolding
 - Manage workflow workers
 - Connect with Temporal server locally
