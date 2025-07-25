@@ -1,0 +1,12 @@
+echo '[tox]
+envlist = py39
+
+[testenv]
+deps =
+    pytest
+    mypy
+    ruff
+commands =
+    pytest
+    mypy ${MOD_NAME}
+    ruff ${MOD_NAME}' > "$BASE_DIR/tox.ini"

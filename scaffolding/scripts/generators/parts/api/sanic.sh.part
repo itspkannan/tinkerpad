@@ -1,0 +1,14 @@
+poetry add sanic
+cat > "$SRC_DIR/main.py" <<EOF
+from sanic import Sanic
+from sanic.response import json
+
+app = Sanic("App_$MOD_NAME")
+
+@app.get("/")
+async def hello(request):
+    return json({"message": "Hello from $MOD_NAME using Sanic"})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
+EOF

@@ -1,0 +1,10 @@
+poetry add fastapi uvicorn
+cat > "$SRC_DIR/main.py" <<EOF
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def hello():
+    return {"message": "Hello from $MOD_NAME using FastAPI"}
+EOF

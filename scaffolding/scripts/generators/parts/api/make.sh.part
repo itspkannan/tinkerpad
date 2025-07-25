@@ -1,0 +1,24 @@
+echo '.DEFAULT_GOAL := help
+
+help:  ## Show available commands
+	@echo "\n📦 Module Commands:"
+	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS=":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@echo ""
+
+install:  ## Install dependencies
+	poetry install --no-root
+
+test:  ## Run tests
+	poetry run pytest
+
+lint:  ## Run ruff
+	poetry run ruff .
+
+type-check:  ## Run mypy
+	poetry run mypy .
+
+format:  ## Auto-format code
+	poetry run ruff . --fix
+
+tox:  ## Run tox
+	tox' > "$BASE_DIR/Makefile"
